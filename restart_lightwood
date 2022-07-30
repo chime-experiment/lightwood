@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -e lightwood.pid ]
+then
+  echo "killing $(cat lightwood.pid)"
+  kill $(cat lightwood.pid)
+  sleep 1
+fi
+
+( perl -wT -Mlib=$(pwd) ./lightwood.pl ./lightwood.yaml >lightwood.stdout 2>lightwood.stderr & )

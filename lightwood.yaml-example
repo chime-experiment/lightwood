@@ -1,0 +1,44 @@
+---
+# SERVER CONFIG
+#
+# The interface to bind to.  Probably should be localhost so you can then
+# reverse proxy it through your web server.  You should do this so you can
+# SSL-encrypt traffic to and from Lightwood.
+interface:   127.0.0.1
+
+# The port to listen on
+port:       3737
+
+# =================================
+#
+# SLACK CONFIG
+#
+# The Slack API base URL
+slackapi:    https://slack.com/api
+
+# The signing secret.  Find it here:
+#
+# https://api.slack.com/apps/A##########/general
+slacksign:  abcdef0123456789abcdef0123456789
+
+# The OAuth token for the installed App.  _After_ installing the app into the
+# workspace, you can find it here:
+#
+# https://api.slack.com/apps/A##########/oauth
+slacktoken:  xoxb-000000000000-0000000000000-89aAbBcCdDeEfFgGhHjJkKyY
+
+# The Slack member ID of the Lightwood "developer".  This should probably be a list.
+slackdevid: U00000000
+
+# =================================
+#
+# MEDIAWIKI CONFIG
+#
+# The URL for the wiki API
+wikiapi:    https://wiki.url/wiki/api.php
+
+# The bot user account for wiki access
+wikiuser:   wikiuser
+
+# The wiki user account password
+wikipass:   wikipass
