@@ -1,0 +1,53 @@
+# This is an example of a Lightwood::Commands module
+# implementing instance commands.  To use this example
+# in a funcional Lightwood instance, rename this file
+# to "Commands.pm".
+#
+# See also the Lightwood::TestCommands module for more 
+# examples of how to implement commands.
+
+package Lightwood::Commands;
+
+use strict;
+
+use Lightwood::Wiki;
+
+# Append a message to a wiki page
+sub _append {
+  local $_;
+  my ($prefix, %params) = @_;
+
+  # Create a wiki API client
+  my $wiki = Lightwood::Wiki->new();
+
+  # The first word of the payload is the page name
+  my ($page, $message) = $params{payload} =~ /([^ ]+) (.*)/;
+
+  # get the wikitext
+  my $wiki_text = $wiki->GetWikiText($page);
+
+  # Append the message
+  $wiki_text .= $message
+
+  # Now post the updated entry
+  if (not $wiki->PutWikiText($page, $wiki_text, "via Slack/Lightwood")) {
+    # Error message to send to slack.
+    return "Oh no!  An error occurred while trying to post your entry. " .
+    ":disappointed:"
+  }
+
+  # Success message to send to slack.
+  return "OK!  I've added your message to "$page". :slightly_smiling_face:"
+}
+
+# This command list is exported to Lightwood proper
+our %commands = (
+  append => {
+    help => "Append _message_ (which may contain wiki markup) to the wiki page " .
+    "_page_",
+    params => "page message",
+    dispatch => \&_append,
+  },
+);
+
+1
