@@ -24,7 +24,7 @@ sub new {
 
   # Add the "/lw" command
   my $lw = $lightwood->slash_command("lw",
-    usage => "I'm Lightwood.  I can help you interact with the CHIMEwiki.  " .
+    usage => "I'm Lightwood.  I can help you interact with the wiki.  " .
     "To do so, use the `/lw` command.");
 
   # Add test subcommands
