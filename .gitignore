@@ -1,4 +1,7 @@
+*~
+.*sw*
 lightwood.pid
 lightwood.stdout
 lightwood.stderr
 lightwood.yaml
+Lightwood/Commands.pm
