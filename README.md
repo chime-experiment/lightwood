@@ -10,6 +10,15 @@ Lightwood is the ill-considered offspring of a MediaWiki bot and a Slack app.
 4. Create some instance commands in `Lightwood/Commands.pm`
 5. Proxy lightwood through your webserver
 
+## Required permissions for the Slack App:
+These may vary based on what's needed by instance command implementations, but the minimum required is:
+```
+    app_mentions:read :     View messages that directly mention @Lightwood in conversations that the app is in
+    chat:write        :     Send messages as @Lightwood
+    commands          :     Add shortcuts and/or slash commands that people can use
+    users:read        :     View people in a workspace
+```
+
 ## License
 
 Lightwood is distributed under the terms of the GNU Public License, either
