@@ -10,6 +10,20 @@ Lightwood is the ill-considered offspring of a MediaWiki bot and a Slack app.
 4. Create some instance commands in `Lightwood/Commands.pm`
 5. Proxy lightwood through your webserver
 
+## Package requirements
+I think these are the only additional perl modules needed:
+```
+ JSON
+ Net::HTTP
+ Net::Server
+ WWW::Form::UrlEncoded
+ YAML::Tiny
+```
+In Ubuntu, if you don't want to get them from CPAN, you can install the with `apt` as well:
+```
+ apt-get install libjson-perl libnet-http-perl libnet-server-perl libwww-form-urlencoded-perl libyaml-tiny-perl
+```
+
 ## Required permissions for the Slack App:
 These may vary based on what's needed by instance command implementations, but the minimum required is:
 ```
