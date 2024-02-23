@@ -13,7 +13,9 @@ Lightwood is the ill-considered offspring of a MediaWiki bot and a Slack app.
 ## Package requirements
 I think these are the only additional perl modules needed:
 ```
+ Encode
  JSON
+ LWP
  Net::HTTP
  Net::Server
  WWW::Form::UrlEncoded
@@ -21,7 +23,7 @@ I think these are the only additional perl modules needed:
 ```
 In Ubuntu, if you don't want to get them from CPAN, you can install the with `apt` as well:
 ```
- apt-get install libjson-perl libnet-http-perl libnet-server-perl libwww-form-urlencoded-perl libyaml-tiny-perl
+ apt-get install libencode-perl libjson-perl libnet-http-perl libnet-server-perl libwww-form-urlencoded-perl libwww-perl libyaml-tiny-perl
 ```
 
 ## Required permissions for the Slack App:
