@@ -26,7 +26,7 @@ In Ubuntu, if you don't want to get them from CPAN, you can install the with `ap
  apt-get install libencode-perl libjson-perl libnet-http-perl libnet-server-perl libwww-form-urlencoded-perl libwww-perl libyaml-tiny-perl
 ```
 
-## Required permissions for the Slack App:
+## Slack app config
 These may vary based on what's needed by instance command implementations, but the minimum required is:
 ```
     app_mentions:read :     View messages that directly mention @Lightwood in conversations that the app is in
@@ -34,6 +34,9 @@ These may vary based on what's needed by instance command implementations, but t
     commands          :     Add shortcuts and/or slash commands that people can use
     users:read        :     View people in a workspace
 ```
+
+* Create a command called `/lw`.  Point it to `<lightwood_base_url>/slash`.
+* Enable event subscriptions.  Use `<lightwood_base_url>/event` as the request URL.
 
 ## License
 

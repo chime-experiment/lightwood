@@ -101,7 +101,20 @@ sub handle_event  {
 
     if ($event{type} eq "app_mention") {
       print STDERR "APP MENTION\n";
-      my ($subcommand, $payload) = $event{text} =~ /<\@U012L7J7AAH>\s*([^\s]+)\s*(.*)/s;
+      # Yes, there are two "elements" keys here...
+      my @elements = @{$event{blocks}[0]{elements}[0]{elements}};
+      my $text = undef;
+      for my $el (@elements) {
+        $text = $$el{text} if ($$el{type} eq "text")
+      }
+
+      if (not defined $text) {
+        print STDERR "Couldn't find text in the event!\n";
+        print STDERR encode_json(\%form_data), "\n";
+        return 0
+      }
+
+      my ($subcommand, $payload) = $text =~ /\s*([^\s]+)\s*(.*)/s;
 
       print STDERR "subcommand = $subcommand = ";
       for (split //, $subcommand) {
